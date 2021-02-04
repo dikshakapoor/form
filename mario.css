@@ -11,13 +11,11 @@
     row-gap: 0;
     column-gap: 0;
   }
-  
-  .grid-item {
-    padding: 1em;
-    border: 1px solid black;
-    text-align: center;
-  }
 
   table, th, td {
     border: 1px solid black;
+  }
+
+  table{
+    border-collapse: collapse;
   }

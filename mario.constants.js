@@ -12,10 +12,8 @@ export const DIRECTION = {
 export const GAME_STATE = {
     END: 'END',
     IN_PROGRESS: 'IN_PROGRESS',
-    MARIO_ATE_MUSHROOM: 'MARIO_ATE_MUSHROOM'    
-    
+    MARIO_ATE_MUSHROOM: 'MARIO_ATE_MUSHROOM'     
 }
-
 
 export const KEY_CODE_TO_DIRECTION={
     37: DIRECTION.LEFT,

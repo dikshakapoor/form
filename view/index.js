@@ -1,30 +1,38 @@
 
-import {KEY_CODE_TO_DIRECTION} from "../mario.constants"
-const container = document.getElementById("container");
+import {KEY_CODE_TO_DIRECTION, MUSHROOM, POISON} from "../mario.constants"
+
 const gridTable = document.getElementById("gridTable");
-console.log(container);
 
-document.addEventListener('keypress', function(event){alert(event.keyCode+" ")});
-
-export function change_mario_direction(event){
+export const  change_mario_direction = (mario, event) => {
+    if (event){
     let x = event.keyCode;
     let direction = KEY_CODE_TO_DIRECTION[x];
-    // console.log("KEY PRESS : "+direction+" OLD DIRECTION : "+mario.direction)
-    console.log("KEY PRESS : "+direction)
-    // mario.direction = direction;
+    if (!direction) return;
+    mario.direction = direction;
+    } 
+    return null;
 }
 
-// gridTable.addEventListener("keypress",change_mario_direction)
-
-
+export function addImage(cell, imageType){
+    var img = document.createElement('img'); 
+    debugger
+    if(imageType === MUSHROOM) {
+        img.src = "https://pngimg.com/uploads/mario/mario_PNG75.png"; 
+    }
+    else if(imageType === POISON){
+        img.src = "https://pngimg.com/uploads/poison/poison_PNG61.png";
+    }
+    else if (imageType === "MARIO"){
+        img.src = 'https://pngimg.com/uploads/mario/mario_PNG127.png'; 
+    }
+    img.style.width = '20px';
+    img.style.height = '20px';
+    img.style.alignContent = "center";
+    cell.appendChild(img);
+}
 
 export function makeRowsFromGrid(grid,mario) {
-
-    
     gridTable.innerHTML=""
-
-   
-
     for(let i = 0;i<grid.length;i++){
         let row = document.createElement("tr")
         
@@ -32,11 +40,11 @@ export function makeRowsFromGrid(grid,mario) {
             let cell = document.createElement("td")
             let id = "cell_"+i+"_"+j
             cell.id = id
-            // console.log("Creating : "+id)
             if(grid[i][j] == "POISON"){
-                cell.innerHTML = "P"
+                addImage(cell,"POISON",i ,j)
+
             }else if( grid[i][j] == "MUSHROOM"){
-                cell.innerHTML = "M"
+                addImage(cell, "MUSHROOM", i ,j)
             }else{
                 cell.innerHTML="&nbsp;"
             }
@@ -55,5 +63,6 @@ export function remove_mario(i,j){
 
 export function display_mario(mario){
     let cell = document.getElementById("cell_"+mario.i+"_"+mario.j)
-    cell.innerHTML="~M~"
+    debugger;
+    addImage(cell,"MARIO",mario.i ,mario.j)
 }

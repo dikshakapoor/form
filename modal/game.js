@@ -33,16 +33,9 @@ class Game {
     }
 
     init(){
-        // this.fillPoisonCoordinate();
+        this.fillPoisonCoordinate();
         this.fillMushroomCoordinate();
     }
-
-    // refreshGridAndIncreaseSpeed() {
-    //      this.grid = new Array(GRID_SIZE).fill(null).map(()=>Array(GRID_SIZE).fill(null));
-    //      this.mario.incrementSeed();
-    //      this.fillPoisonCoordinate();
-
-    // }
 
     fillPoisonCoordinate(){
      for (let i = 0 ; i < this.poisonCount; i++){ //check mario position too
@@ -53,11 +46,10 @@ class Game {
     }
 
     fillMushroomCoordinate(){
-        const  i  = getRandomCoordinate(); // check mario positon too
-        const j = 0;        
+        const  i  = getRandomCoordinate();
+        const j = getRandomCoordinate();        
         if (this.grid[i][j] == null) this.grid[i][j] = MUSHROOM;
-        else this.fillMushroomCoordinate()
-        
+        else this.fillMushroomCoordinate()   
     }
 
 }

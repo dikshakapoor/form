@@ -10,17 +10,14 @@ class Mario {
     }
 
     incrementSpeed () {
-        this.speed = Math.max(this.speed-1,0)  // speed increase by 100ms in animation decrease speed by 100
+        this.speed = Math.max(this.speed-1,0)
     }
 
     takeStep(){
-        
         if(this.speed_counter < this.speed){
             this.speed_counter = this.speed_counter+1;
-            console.log("Skipping")
             return;
         }
-        console.log("doing")
         this.speed_counter = 0;
 
         let increment_i = 0;
@@ -35,14 +32,12 @@ class Mario {
         }else if(this.direction == DIRECTION.LEFT){
                 increment_j = -1
         }else{
-            // Direction.RIGHT
             increment_j = 1
         }
         let new_i = this.i + increment_i
         let new_j = this.j + increment_j
 
         if(new_i<0 || new_j<0 || new_i>=GRID_SIZE || new_j>=GRID_SIZE){
-            /// came out 
             this.direction = OPPOSITE_DIRECTION_MAP[this.direction]
         }else{
             this.i = new_i;
