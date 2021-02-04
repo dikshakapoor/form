@@ -34,8 +34,7 @@ export function addImage(cell, imageType){
 export function makeRowsFromGrid(grid,mario) {
     gridTable.innerHTML=""
     for(let i = 0;i<grid.length;i++){
-        let row = document.createElement("tr")
-        
+        let row = document.createElement("tr") 
         for(let j =0;j<grid[0].length;j++){
             let cell = document.createElement("td")
             let id = "cell_"+i+"_"+j
@@ -63,6 +62,6 @@ export function remove_mario(i,j){
 
 export function display_mario(mario){
     let cell = document.getElementById("cell_"+mario.i+"_"+mario.j)
-    debugger;
+    cell.innerHTML = "";
     addImage(cell,"MARIO",mario.i ,mario.j)
 }
