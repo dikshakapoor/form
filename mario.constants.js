@@ -9,3 +9,25 @@ export const DIRECTION = {
     DOWN : 'DOWN',
 }
 
+export const GAME_STATE = {
+    END: 'END',
+    IN_PROGRESS: 'IN_PROGRESS',
+    MARIO_ATE_MUSHROOM: 'MARIO_ATE_MUSHROOM'    
+    
+}
+
+
+export const KEY_CODE_TO_DIRECTION={
+    37: DIRECTION.LEFT,
+    38: DIRECTION.UP,
+    39: DIRECTION.RIGHT,
+    40: DIRECTION.DOWN
+}
+
+
+export const OPPOSITE_DIRECTION_MAP ={
+    LEFT : 'RIGHT',
+    RIGHT: 'LEFT',
+    UP: 'DOWN',
+    DOWN : 'UP',
+}

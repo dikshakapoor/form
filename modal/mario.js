@@ -1,14 +1,55 @@
+import { GRID_SIZE ,OPPOSITE_DIRECTION_MAP,DIRECTION} from "../mario.constants";
+
 class Mario {
-    constructor (xCoordinate, yCoordinate , speed , direction){
-        this.xCoordinate = xCoordinate;
-        this.yCoordinate = yCoordinate;
-        this.speed = speed; // inital is 1000ms
+    constructor (i =0, j=0 , direction){
+        this.i = i;
+        this.j = j;
+        this.speed = 10; 
         this.direction = direction;
+        this.speed_counter = 0;
     }
 
-    incrementSeed () {
-        this.speed = speed + 100 // speed increase by 100ms 
+    incrementSpeed () {
+        this.speed = Math.max(this.speed-1,0)  // speed increase by 100ms in animation decrease speed by 100
     }
+
+    takeStep(){
+        
+        if(this.speed_counter < this.speed){
+            this.speed_counter = this.speed_counter+1;
+            console.log("Skipping")
+            return;
+        }
+        console.log("doing")
+        this.speed_counter = 0;
+
+        let increment_i = 0;
+        let increment_j = 0;
+
+        if(this.direction == DIRECTION.UP )
+        {
+                increment_i = -1
+        }else if(this.direction == DIRECTION.DOWN){
+                increment_i= 1
+
+        }else if(this.direction == DIRECTION.LEFT){
+                increment_j = -1
+        }else{
+            // Direction.RIGHT
+            increment_j = 1
+        }
+        let new_i = this.i + increment_i
+        let new_j = this.j + increment_j
+
+        if(new_i<0 || new_j<0 || new_i>=GRID_SIZE || new_j>=GRID_SIZE){
+            /// came out 
+            this.direction = OPPOSITE_DIRECTION_MAP[this.direction]
+        }else{
+            this.i = new_i;
+            this.j = new_j;
+        }
+    }
+   
 
 }
 
