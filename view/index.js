@@ -62,6 +62,6 @@ export function remove_mario(i,j){
 
 export function display_mario(mario){
     let cell = document.getElementById("cell_"+mario.i+"_"+mario.j)
-    cell.innerHTML = "";
+    cell.innerHTML = ""; // removing already present image if mario enter that block
     addImage(cell,"MARIO",mario.i ,mario.j)
 }

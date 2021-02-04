@@ -15,7 +15,6 @@ class Game {
     }
 
     compute_new_state(){
-        // current mario is on a poison
         let grid_value_at_mario = this.grid[this.mario.i][this.mario.j] 
         if(grid_value_at_mario == POISON){
             this.state = GAME_STATE.END
@@ -24,8 +23,6 @@ class Game {
         }else{
             this.state = GAME_STATE.IN_PROGRESS
         }
-        // current mario is on a mushroom
-        // fail safe 
         this.computes = this.computes+1;
         if(this.computes > this.max_computes){
             this.state = GAME_STATE.END
@@ -38,7 +35,7 @@ class Game {
     }
 
     fillPoisonCoordinate(){
-     for (let i = 0 ; i < this.poisonCount; i++){ //check mario position too
+     for (let i = 0 ; i < this.poisonCount; i++){ //check mario position too --> cant be present next to poison
         const  poisonXcoordinate  = getRandomCoordinate();
         const poisonYcoordinate =getRandomCoordinate();
         this.grid[poisonXcoordinate][poisonYcoordinate] = POISON;

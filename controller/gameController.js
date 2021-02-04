@@ -29,9 +29,10 @@ class GameController {
             let old_mario = this.game.mario;
             this.game = new Game(old_mario)
             makeRowsFromGrid(this.game.grid,this.game.mario)
-        }
+        }else if(mario_i_old_loc!== this.game.mario.i || mario_j_old_loc!== this.game.mario.j){
         remove_mario(mario_i_old_loc,mario_j_old_loc)
         display_mario(this.game.mario)
+        }
             }  
     var id = setInterval(frame, 100);
     }
