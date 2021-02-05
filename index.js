@@ -1,4 +1,3 @@
-// import {makeRows} from './view';
 import GameController from './controller/gameController';
 
 const gameController = new GameController();
