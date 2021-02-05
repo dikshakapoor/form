@@ -5,12 +5,32 @@ import {display_mario, makeRowsFromGrid,remove_mario,change_mario_direction, cha
 class GameController {
 
  constructor() {
-    this.mario = new Mario(0,0,DIRECTION.UP)
-    this.game =  new Game(this.mario) ;
+     const gameData = this._retrieveData();
+     debugger;
+     if (gameData) {
+        this.mario = new Mario(gameData.mario.i ,gameData.mario.j, gameData.mario.direction);
+        this.game =  new Game(this.mario);
+     }
+     else{
+        this.mario = new Mario(0 ,0, DIRECTION.UP);
+        this.game =  new Game(this.mario) ;
+     }
+    
+    this._storage()
  }
 
-  keyPressEvent = (event) => {    
-   return change_mario_direction(this.mario, event)
+ _storage(){
+     debugger;
+     localStorage.setItem('localState', JSON.stringify(this))
+ }
+
+ _retrieveData(){
+    return JSON.parse(localStorage.getItem('localState'))
+ }
+
+  keyPressEvent = (event) => { 
+    change_mario_direction(this.mario, event)
+    this._storage()
  }
 
  onClickEvent = (event) =>{
@@ -18,9 +38,11 @@ class GameController {
      if(this.game.state === GAME_STATE.IN_PROGRESS) {
          this.play()
      }
+     this._storage()
  }
 
   play () {
+      debugger;
     makeRowsFromGrid(this.game.grid,this.game.mario)
     change_mario_direction(this.mario)
     const frame = () => {
@@ -32,6 +54,7 @@ class GameController {
         let mario_j_old_loc = this.game.mario.j;
         this.game.mario.takeStep();
         this.game.compute_new_state()
+        this._storage()
         if(mario_i_old_loc!== this.game.mario.i || mario_j_old_loc!== this.game.mario.j){
             remove_mario(mario_i_old_loc,mario_j_old_loc)
             display_mario(this.game.mario)
@@ -44,6 +67,7 @@ class GameController {
             let old_mario = this.game.mario;
             this.game = new Game(old_mario)
             makeRowsFromGrid(this.game.grid,this.game.mario)
+            this._storage()
         }
             }  
     var id = setInterval(frame, 100);
