@@ -4,14 +4,17 @@ import {GAME_STATE, GRID_SIZE,MUSHROOM,POISON} from '../mario.constants';
 const getRandomCoordinate = () => Math.floor(Math.random()*GRID_SIZE);
 
 class Game {
-    constructor(mario) {
-        this.mario  = mario
-        this.grid = new Array(GRID_SIZE).fill(null).map(()=>Array(GRID_SIZE).fill(null));
+    constructor(mario, oldGrid, oldState) {
+        this.mario  = mario;
+        this.grid = oldGrid;
         this.poisonCount = 10;
+        debugger;
         this.state = GAME_STATE.IN_PROGRESS
-        this.init()
         this.max_computes= 100000;
         this.computes = 0
+        if (!oldGrid || oldState === GAME_STATE.END){
+            this.grid = new Array(GRID_SIZE).fill(null).map(()=>Array(GRID_SIZE).fill(null));
+            this.init()}
     }
 
     compute_new_state(){

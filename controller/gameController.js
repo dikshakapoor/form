@@ -6,21 +6,19 @@ class GameController {
 
  constructor() {
      const gameData = this._retrieveData();
-     debugger;
      if (gameData) {
         this.mario = new Mario(gameData.mario.i ,gameData.mario.j, gameData.mario.direction);
-        this.game =  new Game(this.mario);
+        this.game =  new Game(this.mario, gameData.game.grid, gameData.game.state );
      }
      else{
         this.mario = new Mario(0 ,0, DIRECTION.UP);
         this.game =  new Game(this.mario) ;
      }
-    
+    debugger;
     this._storage()
  }
 
  _storage(){
-     debugger;
      localStorage.setItem('localState', JSON.stringify(this))
  }
 
@@ -42,7 +40,6 @@ class GameController {
  }
 
   play () {
-      debugger;
     makeRowsFromGrid(this.game.grid,this.game.mario)
     change_mario_direction(this.mario)
     const frame = () => {
