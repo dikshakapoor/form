@@ -8,8 +8,8 @@ class Game {
         this.mario  = mario
         this.grid = new Array(GRID_SIZE).fill(null).map(()=>Array(GRID_SIZE).fill(null));
         this.poisonCount = 10;
-        this.init()
         this.state = GAME_STATE.IN_PROGRESS
+        this.init()
         this.max_computes= 100000;
         this.computes = 0
     }
@@ -35,7 +35,7 @@ class Game {
     }
 
     fillPoisonCoordinate(){
-     for (let i = 0 ; i < this.poisonCount; i++){ //check mario position too --> cant be present next to poison
+     for (let i = 0 ; i < this.poisonCount; i++){ 
         const  poisonXcoordinate  = getRandomCoordinate();
         const poisonYcoordinate =getRandomCoordinate();
         this.grid[poisonXcoordinate][poisonYcoordinate] = POISON;
@@ -50,5 +50,4 @@ class Game {
     }
 
 }
-console.log("game")
 export default Game;

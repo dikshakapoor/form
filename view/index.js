@@ -1,5 +1,5 @@
 
-import {KEY_CODE_TO_DIRECTION, MUSHROOM, POISON} from "../mario.constants"
+import {KEY_CODE_TO_DIRECTION, MUSHROOM, POISON,GAME_STATE} from "../mario.constants"
 
 const gridTable = document.getElementById("gridTable");
 
@@ -13,9 +13,17 @@ export const  change_mario_direction = (mario, event) => {
     return null;
 }
 
+export const change_game_state = (game, event) => {
+    if(event.target.id === "paused") {
+      game.state = GAME_STATE.PAUSED
+    }
+   else if (event.target.id === "play"){
+       game.state = GAME_STATE.IN_PROGRESS
+   }
+}
+
 export function addImage(cell, imageType){
-    var img = document.createElement('img'); 
-    debugger
+    var img = document.createElement('img');     
     if(imageType === MUSHROOM) {
         img.src = "https://pngimg.com/uploads/mario/mario_PNG75.png"; 
     }
@@ -25,9 +33,6 @@ export function addImage(cell, imageType){
     else if (imageType === "MARIO"){
         img.src = 'https://pngimg.com/uploads/mario/mario_PNG127.png'; 
     }
-    img.style.width = '20px';
-    img.style.height = '20px';
-    img.style.alignContent = "center";
     cell.appendChild(img);
 }
 
