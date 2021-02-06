@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    font-family: 'Josefin Sans', sans-serif;
+  }
+  
+.container{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+form{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-flow: column;
+}
+
+div{
+    display: flex;
+    margin-top: 2em;
+}
+
+label {
+    margin-right: 1em;
+    
+}

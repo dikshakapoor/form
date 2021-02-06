@@ -5,40 +5,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form</title>
+    <link rel="stylesheet" href="form.css" />
 </head>
 
 <body>
-    <form>
-        <label> Name
-        </label>
-        <input type="">
-        <input type="button">
-        <input type="checkbox">
-        <input type="color">
-        <input type="date">
-        <input type="datetime-local">
-        <input type="email">
-        <input type="file">
-        <input type="hidden">
-        <input type="image">
-        <input type="month">
-        <input type="number">
-        <input type="password">
-        <input type="radio">
-        <input type="range">
-        <input type="reset">
-        <input type="search">
-        <input type="submit">
-        <input type="tel">
-        <input type="text"> (default value)
-        <input type="time">
-        <input type="url">
-        <input type="week">
-
-        </input>
-
-    </form>
-
+    <div class="container">
+        <form>
+            <div>
+                <label> Name </label>
+                <input type="text" name="userName" id="name" placeholder="add full name" required>
+            </div>
+            <div>
+                <label> Married </label>
+                <input type="checkbox" name="marriedStatus" id="married">
+            </div>
+            <div>
+                <label> Date of joining </label>
+                <input type="date" id="dateOfJoining" name="DOJ" placeholder="please add date" required>
+            </div>
+            <div>
+                <label> Email </label>
+                <input type="email" id="email" name="email" placeholder="please add email id" required
+                    pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$">
+            </div>
+            <div>
+                <label> Phone Number</label>
+                <input type="number" id="phoneNumber" name="phoneNumber" placeholder="please add phone number"
+                    pattern="[0-9]{1}-[0-9]{3}-[0-9]{3}-[0-9]{3}" required>
+            </div>
+            <div>
+                <label> Create Password</label>
+                <input type="password" id="createPassword" name="createPassword" placeholder="please create password"
+                    required>
+            </div>
+            <div>
+                <label> Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="please confirm password"
+                    required>
+            </div>
+            <div>
+                <input type="submit">
+            </div>
+        </form>
+    </div>
+    <script src=" dist/bundle.js"></script>
 </body>
 
 </html>
